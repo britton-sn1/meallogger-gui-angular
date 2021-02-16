@@ -1,0 +1,16 @@
+<div>
+  <div>
+    <span class="fooditem-header">Id</span><span class="fooditem-header">Name</span>
+    <span class="fooditem-header">Carbs</span><span class="fooditem-header">Sugars</span>
+    <span class="fooditem-header">Fats</span><span class="fooditem-header">Saturates</span>
+    <span class="fooditem-header">Fibre</span><span class="fooditem-header">Protien</span>
+    <span class="fooditem-header">Sodium</span><span class="fooditem-header">Units</span>
+  </div>
+  <div *ngFor="let foodItem of foodItems">
+    <span class="fooditem-row">{{foodItem.id}}</span><span class="fooditem-row">{{foodItem.name}}</span>
+    <span class="fooditem-row">{{foodItem.carbs}}</span><span class="fooditem-row">{{foodItem.sugars}}</span>
+    <span class="fooditem-row">{{foodItem.fats}}</span><span class="fooditem-row">{{foodItem.saturates}}</span>
+    <span class="fooditem-row">{{foodItem.fibre}}</span><span class="fooditem-row">{{foodItem.protien}}</span>
+    <span class="fooditem-row">{{foodItem.sodium}}</span><span class="fooditem-row">{{foodItem.units}}</span>
+  </div>
+</div>

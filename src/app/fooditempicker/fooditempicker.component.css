@@ -1,0 +1,18 @@
+div {
+    padding: 2px;
+}
+.fooditem-header {
+  border: 2px solid #ddd;
+  border-color: #222;
+  padding: 1px 15px ;
+  background: #0090ff;
+  color: #B0F000;
+  width: 30%;
+}
+
+.fooditem-row {
+  border: 2px solid #ddd;
+  border-color: #222;
+  padding: 1px;
+  background: #00B0ff;
+}
