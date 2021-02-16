@@ -1,19 +1,45 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+
 import { FoodItem } from './fooditem';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class MealServiceService {
 
-  constructor() { }
-  foodItems: FoodItem[] = [
-    { id: 1, name: "FI1", carbs: 87339, sugars: 76383, protien: 78282, fats: 7383, saturates: 7383, fibre: 7383, sodium: 8292, units: "100g" },
-    { id: 2, name: "FI2", carbs: 4839, sugars: 233, protien: 82, fats: 73, saturates: 83, fibre: 283, sodium: 82, units: "100g" } 
-  ];
+  private mealloggerUrl = 'api/meallogger';  // URL to web api
 
-  getFoodItems(): FoodItem[] {
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
-    return this.foodItems;
+
+  constructor(private http: HttpClient) { }
+
+  getFoodItems(): Observable<FoodItem[]> {
+    let fooditemsUrl = this.mealloggerUrl + "/fooditems";
+
+    return this.http.get<FoodItem[]>(fooditemsUrl).pipe(
+      catchError(this.handleError<FoodItem[]>(`get food items`)));
   }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      //this.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+
 }

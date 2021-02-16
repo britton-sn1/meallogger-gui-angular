@@ -4,7 +4,7 @@ export interface FoodItem {
   fibre: number;
   id: number;
   name: string;
-  protien: number;
+  protein: number;
   saturates: number;
   sugars: number;
   sodium: number;

@@ -18,6 +18,6 @@ export class FooditempickerComponent implements OnInit {
   }
 
   getFoodItems(): void {
-    this.foodItems = this.mealService.getFoodItems();
+    this.mealService.getFoodItems().subscribe(fooditems => this.foodItems = fooditems);
   }
 }
