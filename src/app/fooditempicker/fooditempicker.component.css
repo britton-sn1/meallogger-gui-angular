@@ -1,18 +1,31 @@
-div {
-    padding: 2px;
-}
-.fooditem-header {
-  border: 2px solid #ddd;
+
+.fooditem-header-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 10%;
+  flex: 1;
+  border: 2px solid;
   border-color: #222;
-  padding: 1px 15px ;
+  padding: 1px 15px;
   background: #0090ff;
   color: #B0F000;
-  width: 30%;
+}
+
+.fooditem-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 10%;
+  flex: 1;
+  border: 2px solid;
+  border-color: #222;
+  padding: 1px 15px;
+  background: #00B0ff;
+  color: #FFBFBF;
 }
 
 .fooditem-row {
-  border: 2px solid #ddd;
-  border-color: #222;
-  padding: 1px;
-  background: #00B0ff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
 }
