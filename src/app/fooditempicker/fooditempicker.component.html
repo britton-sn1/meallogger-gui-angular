@@ -18,9 +18,7 @@
     <span class="fooditem-column">{{foodItem.protein}}</span>
     <span class="fooditem-column">{{foodItem.sodium}}</span>
     <span class="fooditem-column">{{foodItem.units}}</span>
-
-    <span *ngIf="this.selected===foodItem.id && this.editing===0" class="fooditem-column"><a href="fooditemeditor/{{foodItem.id}}"> Edit </a></span>
-    <span *ngIf="this.selected!==foodItem.id" class="fooditem-column">&nbsp;</span>
+    <span class="fooditem-column"><a href="fooditemeditor/{{foodItem.id}}">Edit</a></span>
   </div>
 </div>
 <div>
