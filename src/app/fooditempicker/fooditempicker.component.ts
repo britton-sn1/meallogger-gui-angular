@@ -11,8 +11,12 @@ export class FooditempickerComponent implements OnInit {
 
   foodItems: FoodItem[];
   selected: number;
+  editing: number;
 
-  constructor(private mealService: MealServiceService) { this.selected = 0;}
+  constructor(private mealService: MealServiceService) {
+    this.selected = 0;
+    this.editing = 0;
+  }
 
   ngOnInit() {
     this.getFoodItems();
@@ -27,10 +31,23 @@ export class FooditempickerComponent implements OnInit {
       return;
     }
     this.selected = foodItem.id;
+    this.editing = 0;
     console.log("selected = " + this.selected);
   }
 
   onEdit(foodItem: FoodItem): void {
-    console.log("Edit " + foodItem.id);
+    this.editing = foodItem.id;
+  }
+
+  onSave(foodItem: FoodItem): void {
+    console.log("on save clicked");
+    this.mealService.put(foodItem).subscribe(fi => this.clearSelection());
+    
+  }
+
+  clearSelection(): void {
+    this.getFoodItems();
+    this.selected = 0;
+    this.editing = 0;
   }
 }

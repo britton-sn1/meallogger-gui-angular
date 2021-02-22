@@ -28,6 +28,13 @@ export class MealServiceService {
       catchError(this.handleError<FoodItem[]>(`get food items`)));
   }
 
+  getFoodItem(id: number): Observable<FoodItem>  {
+    let fooditemsUrl = this.mealloggerUrl + "/fooditems/" + id;
+
+    return this.http.get<FoodItem>(fooditemsUrl).pipe(
+      catchError(this.handleError<FoodItem>(`get food items`)));
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
@@ -42,4 +49,11 @@ export class MealServiceService {
     };
   }
 
+  put(foodItem: FoodItem): Observable<FoodItem>  {
+    console.log("putting food item " + foodItem.id);
+    let fooditemsUrl = this.mealloggerUrl + "/fooditems";
+    return this.http.put<FoodItem>(fooditemsUrl, foodItem, this.httpOptions).pipe(catchError(this.handleError<FoodItem>(`put food items`)));
+  }
+
 }
+

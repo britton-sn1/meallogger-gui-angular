@@ -8,12 +8,39 @@
     <span class="fooditem-header-column">&nbsp;</span>
   </div>
   <div class="fooditem-row" *ngFor="let foodItem of foodItems" (click)="onSelect(foodItem)">
-    <span class="fooditem-column">{{foodItem.id}}</span><span class="fooditem-column">{{foodItem.name}}</span>
-    <span class="fooditem-column">{{foodItem.carbs}}</span><span class="fooditem-column">{{foodItem.sugars}}</span>
-    <span class="fooditem-column">{{foodItem.fats}}</span><span class="fooditem-column">{{foodItem.saturates}}</span>
-    <span class="fooditem-column">{{foodItem.fibre}}</span><span class="fooditem-column">{{foodItem.protein}}</span>
-    <span class="fooditem-column">{{foodItem.sodium}}</span><span class="fooditem-column">{{foodItem.units}}</span>
-    <span *ngIf="this.selected===foodItem.id" class="fooditem-column" (click)="onEdit(foodItem)">Edit</span>
+    <span class="fooditem-column">{{foodItem.id}}</span>
+    <span *ngIf="this.editing!==foodItem.id" class="fooditem-column">{{foodItem.name}}</span>
+    <span *ngIf="this.editing===foodItem.id" class="fooditem-column"><input [(ngModel)]="foodItem.name" /></span>
+
+    <span *ngIf="this.editing!==foodItem.id" class="fooditem-column">{{foodItem.carbs}}</span>
+    <span *ngIf="this.editing===foodItem.id" class="fooditem-column"><input [(ngModel)]="foodItem.carbs" /></span>
+
+    <span *ngIf="this.editing!==foodItem.id" class="fooditem-column">{{foodItem.sugars}}</span>
+    <span *ngIf="this.editing===foodItem.id" class="fooditem-column"><input [(ngModel)]="foodItem.sugars" /></span>
+
+    <span *ngIf="this.editing!==foodItem.id" class="fooditem-column">{{foodItem.fats}}</span>
+    <span *ngIf="this.editing===foodItem.id" class="fooditem-column"><input [(ngModel)]="foodItem.fats" /></span>
+
+    <span *ngIf="this.editing!==foodItem.id" class="fooditem-column">{{foodItem.saturates}}</span>
+    <span *ngIf="this.editing===foodItem.id" class="fooditem-column"><input [(ngModel)]="foodItem.saturates" /></span>
+
+    <span *ngIf="this.editing!==foodItem.id" class="fooditem-column">{{foodItem.fibre}}</span>
+    <span *ngIf="this.editing===foodItem.id" class="fooditem-column"><input [(ngModel)]="foodItem.fibre" /></span>
+
+    <span *ngIf="this.editing!==foodItem.id" class="fooditem-column">{{foodItem.protein}}</span>
+    <span *ngIf="this.editing===foodItem.id" class="fooditem-column"><input [(ngModel)]="foodItem.protein" /></span>
+
+    <span *ngIf="this.editing!==foodItem.id" class="fooditem-column">{{foodItem.sodium}}</span>
+    <span *ngIf="this.editing===foodItem.id" class="fooditem-column"><input [(ngModel)]="foodItem.sodium" /></span>
+
+    <span *ngIf="this.editing!==foodItem.id" class="fooditem-column">{{foodItem.units}}</span>
+    <span *ngIf="this.editing===foodItem.id" class="fooditem-column"><input [(ngModel)]="foodItem.units" /></span>
+
+
+
+    <span *ngIf="this.selected===foodItem.id && this.editing===0" class="fooditem-column" (click)="onEdit(foodItem)">Edit</span>
+    <span *ngIf="this.selected===foodItem.id && this.editing===foodItem.id" class="fooditem-column" (click)="onSave(foodItem)">Save</span>
+    <span *ngIf="this.selected===foodItem.id && this.editing===foodItem.id" class="fooditem-column" (click)="clearSelection()">Cancel</span>
     <span *ngIf="this.selected!==foodItem.id" class="fooditem-column">&nbsp;</span>
   </div>
 </div>
