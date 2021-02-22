@@ -55,5 +55,12 @@ export class MealServiceService {
     return this.http.put<FoodItem>(fooditemsUrl, foodItem, this.httpOptions).pipe(catchError(this.handleError<FoodItem>(`put food items`)));
   }
 
+  post(foodItem: FoodItem): Observable<FoodItem[]> {
+    let fooditemsUrl = this.mealloggerUrl + "/fooditems";
+    var foodItems: FoodItem[];
+    foodItems = [ foodItem ];
+    return this.http.post<FoodItem[]>(fooditemsUrl, foodItems, this.httpOptions).pipe(catchError(this.handleError<FoodItem[]>(`put food items`)));
+  }
+
 }
 

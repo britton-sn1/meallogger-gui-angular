@@ -1,5 +1,5 @@
 <div *ngIf="foodItem">
-  <div class="fooditem-edit-row">
+  <div *ngIf="foodItem.id!==0" class="fooditem-edit-row">
     <span class="fooditem-edit-column-1">Id</span><span class="fooditem-edit-column-2">{{foodItem.id}}</span>
   </div>
   <div class="fooditem-edit-row">
