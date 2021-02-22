@@ -1,0 +1,30 @@
+.fooditem-edit-column-1 {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 10%;
+  flex: 1;
+  border: 2px solid;
+  border-color: #222;
+  padding: 1px 15px;
+  background: #00B0ff;
+  color: #FFBFBF;
+}
+
+.fooditem-edit-column-2 {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 90%;
+  flex: 9;
+  border: 2px solid;
+  border-color: #222;
+  padding: 1px 15px;
+  background: #00B0ff;
+  color: #FFBFBF;
+}
+
+.fooditem-edit-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}

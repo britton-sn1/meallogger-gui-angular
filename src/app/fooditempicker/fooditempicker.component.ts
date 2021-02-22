@@ -39,12 +39,6 @@ export class FooditempickerComponent implements OnInit {
     this.editing = foodItem.id;
   }
 
-  onSave(foodItem: FoodItem): void {
-    console.log("on save clicked");
-    this.mealService.put(foodItem).subscribe(fi => this.clearSelection());
-    
-  }
-
   clearSelection(): void {
     this.getFoodItems();
     this.selected = 0;
