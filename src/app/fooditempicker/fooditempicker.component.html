@@ -1,16 +1,19 @@
 <div>
-  <div class="fooditem-row"> 
+  <div class="fooditem-row">
     <span class="fooditem-header-column">Id</span><span class="fooditem-header-column">Name</span>
     <span class="fooditem-header-column">Carbs</span><span class="fooditem-header-column">Sugars</span>
     <span class="fooditem-header-column">Fats</span><span class="fooditem-header-column">Saturates</span>
     <span class="fooditem-header-column">Fibre</span><span class="fooditem-header-column">Protein</span>
     <span class="fooditem-header-column">Sodium</span><span class="fooditem-header-column">Per Unit</span>
+    <span class="fooditem-header-column">&nbsp;</span>
   </div>
-  <div class="fooditem-row" *ngFor="let foodItem of foodItems">
+  <div class="fooditem-row" *ngFor="let foodItem of foodItems" (click)="onSelect(foodItem)">
     <span class="fooditem-column">{{foodItem.id}}</span><span class="fooditem-column">{{foodItem.name}}</span>
     <span class="fooditem-column">{{foodItem.carbs}}</span><span class="fooditem-column">{{foodItem.sugars}}</span>
     <span class="fooditem-column">{{foodItem.fats}}</span><span class="fooditem-column">{{foodItem.saturates}}</span>
     <span class="fooditem-column">{{foodItem.fibre}}</span><span class="fooditem-column">{{foodItem.protein}}</span>
     <span class="fooditem-column">{{foodItem.sodium}}</span><span class="fooditem-column">{{foodItem.units}}</span>
+    <span *ngIf="this.selected===foodItem.id" class="fooditem-column" (click)="onEdit(foodItem)">Edit</span>
+    <span *ngIf="this.selected!==foodItem.id" class="fooditem-column">&nbsp;</span>
   </div>
 </div>
