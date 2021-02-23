@@ -4,6 +4,11 @@
 <div *ngIf="foodItems">
   <div *ngIf="foodItems.length>0">
     <div>
+      <span><button type="button" [disabled]="pageNo==0" (click)="onPrevPage()">&lt;</button></span>
+      <span>&nbsp;Page&nbsp;{{pageNo+1}}&nbsp;of&nbsp;{{numberOfPages}}&nbsp;</span>
+      <span><button type="button" [disabled]="pageNo==numberOfPages-1" (click)="onNextPage()">&gt;</button></span>
+    </div>
+    <div>
       <div class="fooditem-row">
         <span class="fooditem-header-column">Id</span><span class="fooditem-header-column">Name</span>
         <span class="fooditem-header-column">Carbs</span><span class="fooditem-header-column">Sugars</span>
@@ -13,7 +18,7 @@
         <span class="fooditem-header-column">&nbsp;</span>
       </div>
       <div class="fooditem-row" *ngFor="let foodItem of foodItems">
-        <span class="fooditem-column">{{foodItem.id}}</span>
+        <span id="foodItem-{{foodItem.id}}"class="fooditem-column">{{foodItem.id}}</span>
         <span class="fooditem-column">{{foodItem.name}}</span>
         <span class="fooditem-column">{{foodItem.carbs}}</span>
         <span class="fooditem-column">{{foodItem.sugars}}</span>

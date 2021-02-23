@@ -21,8 +21,8 @@ export class MealServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getFoodItems(): Observable<FoodItem[]> {
-    let fooditemsUrl = this.mealloggerUrl + "/fooditems";
+  getFoodItems(startPage: number, pageSize: number): Observable<FoodItem[]> {
+    let fooditemsUrl = this.mealloggerUrl + "/fooditems?startPage=" + startPage + "&pageSize=" + pageSize;
 
     return this.http.get<FoodItem[]>(fooditemsUrl).pipe(
       catchError(this.handleError<FoodItem[]>(`get food items`)));
@@ -59,7 +59,13 @@ export class MealServiceService {
     let fooditemsUrl = this.mealloggerUrl + "/fooditems";
     var foodItems: FoodItem[];
     foodItems = [ foodItem ];
-    return this.http.post<FoodItem[]>(fooditemsUrl, foodItems, this.httpOptions).pipe(catchError(this.handleError<FoodItem[]>(`put food items`)));
+    return this.http.post<FoodItem[]>(fooditemsUrl, foodItems, this.httpOptions).pipe(catchError(this.handleError<FoodItem[]>(`post food items`)));
+  }
+
+  getFoodItemCount(): Observable<number> {
+    let fooditemsUrl = this.mealloggerUrl + "/fooditems/count";
+
+    return this.http.get<number>(fooditemsUrl, this.httpOptions).pipe(catchError(this.handleError<number>(`get count food items`)));
   }
 
 }
