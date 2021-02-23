@@ -1,3 +1,6 @@
+<div>
+  <H2>Food Items</H2>
+</div>
 <div *ngIf="foodItems">
   <div *ngIf="foodItems.length>0">
     <div>
@@ -23,14 +26,15 @@
         <span class="fooditem-column"><a href="fooditemeditor/{{foodItem.id}}">Edit</a></span>
       </div>
     </div>
-    </div>
-    <div *ngIf="foodItems.length==0">
-      No food items found
-    </div>
-    <div>
-      <a href="fooditemeditor/0">Add New</a>
-    </div>
   </div>
+  <div *ngIf="foodItems.length==0">
+    No food items found
+  </div>
+  <div>&nbsp;</div>
+  <div>
+    <a href="fooditemeditor/0">Add New</a>
+  </div>
+</div>
   <div *ngIf="!foodItems">
     Please Wait
   </div>
