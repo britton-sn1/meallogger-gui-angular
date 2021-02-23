@@ -11,6 +11,7 @@ export class FooditempickerComponent implements OnInit {
   pageSize: number = 2;
   pageNo: number = 0;
   numberOfPages: number = 0;
+  filter: string = "";
 
   foodItems: FoodItem[];
 
@@ -23,11 +24,11 @@ export class FooditempickerComponent implements OnInit {
   }
 
   getFoodItems(): void {
-    this.mealService.getFoodItems(this.pageNo, this.pageSize).subscribe(fooditems => this.foodItems = fooditems);
+    this.mealService.getFoodItems(this.pageNo, this.pageSize, this.filter).subscribe(fooditems => this.foodItems = fooditems);
   }
 
   getNumberOfPages(): void {
-    this.mealService.getFoodItemCount().subscribe(foodItemsCount => this.setNumOfPages(foodItemsCount));
+    this.mealService.getFoodItemCount(this.filter).subscribe(foodItemsCount => this.setNumOfPages(foodItemsCount));
   }
 
   onPrevPage() {
@@ -50,4 +51,10 @@ export class FooditempickerComponent implements OnInit {
       this.numberOfPages = Math.trunc(this.numberOfPages) + 1;
     }
   }
+
+  onFilter() {
+    this.getFoodItems();
+    this.getNumberOfPages();
+  }
+
 }

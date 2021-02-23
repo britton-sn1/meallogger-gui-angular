@@ -21,9 +21,11 @@ export class MealServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getFoodItems(startPage: number, pageSize: number): Observable<FoodItem[]> {
+  getFoodItems(startPage: number, pageSize: number, filter:string): Observable<FoodItem[]> {
     let fooditemsUrl = this.mealloggerUrl + "/fooditems?startPage=" + startPage + "&pageSize=" + pageSize;
-
+    if (filter.trim().length > 0) {
+      fooditemsUrl = fooditemsUrl + "&filter=" + encodeURIComponent(filter);
+    }
     return this.http.get<FoodItem[]>(fooditemsUrl).pipe(
       catchError(this.handleError<FoodItem[]>(`get food items`)));
   }
@@ -62,8 +64,11 @@ export class MealServiceService {
     return this.http.post<FoodItem[]>(fooditemsUrl, foodItems, this.httpOptions).pipe(catchError(this.handleError<FoodItem[]>(`post food items`)));
   }
 
-  getFoodItemCount(): Observable<number> {
+  getFoodItemCount(filter:string): Observable<number> {
     let fooditemsUrl = this.mealloggerUrl + "/fooditems/count";
+    if (filter.trim().length > 0) {
+      fooditemsUrl = fooditemsUrl + "?filter=" + encodeURIComponent(filter);
+    }
 
     return this.http.get<number>(fooditemsUrl, this.httpOptions).pipe(catchError(this.handleError<number>(`get count food items`)));
   }
