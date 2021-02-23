@@ -4,10 +4,10 @@
 <div *ngIf="foodItems">
   <div *ngIf="foodItems.length>0">
     <div>
-      <span><button type="button" [disabled]="pageNo==0" (click)="onPrevPage()">&lt;</button></span>
+      <span><button type="button" [disabled]="pageNo==0"  (click)="onPrevPage()">&lt;</button></span>
       <span>&nbsp;Page&nbsp;{{pageNo+1}}&nbsp;of&nbsp;{{numberOfPages}}&nbsp;</span>
       <span><button type="button" [disabled]="pageNo==numberOfPages-1" (click)="onNextPage()">&gt;</button></span>
-      <span>&nbsp;Name:&nbsp;</span><span><input [(ngModel)]="filter" /><button type="button" (click)="onFilter()">Filter</button></span>
+      <span>&nbsp;Name:&nbsp;</span><span><input [(ngModel)]="filter" maxlength="25" /><button type="button" (click)="onFilter()">Filter</button></span>
     </div>
     <div>
       <div class="fooditem-row">
@@ -34,7 +34,8 @@
     </div>
   </div>
   <div *ngIf="foodItems.length==0">
-    No food items found
+    <span>No food items found&nbsp;</span>
+    <span *ngIf="filter"><button type="button" (click)="onClearFilter()">Clear Filter</button></span>
   </div>
   <div>&nbsp;</div>
   <div>

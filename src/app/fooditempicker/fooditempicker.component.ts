@@ -57,4 +57,8 @@ export class FooditempickerComponent implements OnInit {
     this.getNumberOfPages();
   }
 
+  onClearFilter() {
+    this.filter = "";
+    this.onFilter();
+  }
 }
