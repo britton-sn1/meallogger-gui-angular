@@ -10,12 +10,8 @@ import { MealServiceService } from '../meal-service.service';
 export class FooditempickerComponent implements OnInit {
 
   foodItems: FoodItem[];
-  selected: number;
-  editing: number;
 
   constructor(private mealService: MealServiceService) {
-    this.selected = 0;
-    this.editing = 0;
   }
 
   ngOnInit() {
@@ -26,22 +22,4 @@ export class FooditempickerComponent implements OnInit {
     this.mealService.getFoodItems().subscribe(fooditems => this.foodItems = fooditems);
   }
 
-  onSelect(foodItem: FoodItem): void {
-    if (this.selected === foodItem.id) {
-      return;
-    }
-    this.selected = foodItem.id;
-    this.editing = 0;
-    console.log("selected = " + this.selected);
-  }
-
-  onEdit(foodItem: FoodItem): void {
-    this.editing = foodItem.id;
-  }
-
-  clearSelection(): void {
-    this.getFoodItems();
-    this.selected = 0;
-    this.editing = 0;
-  }
 }

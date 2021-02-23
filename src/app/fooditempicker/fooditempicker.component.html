@@ -9,7 +9,7 @@
         <span class="fooditem-header-column">Sodium</span><span class="fooditem-header-column">Per Unit</span>
         <span class="fooditem-header-column">&nbsp;</span>
       </div>
-      <div class="fooditem-row" *ngFor="let foodItem of foodItems" (click)="onSelect(foodItem)">
+      <div class="fooditem-row" *ngFor="let foodItem of foodItems">
         <span class="fooditem-column">{{foodItem.id}}</span>
         <span class="fooditem-column">{{foodItem.name}}</span>
         <span class="fooditem-column">{{foodItem.carbs}}</span>
